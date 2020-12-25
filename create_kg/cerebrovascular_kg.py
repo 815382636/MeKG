@@ -1,6 +1,6 @@
 import rdflib
 from util.pg_connection import new_connection
-from scrapy_cerebrovascular.model import CerebrovascularDiseases
+from scrapy_cerebrovascular.model import CerebrovascularDiseases, CDtoC
 
 """
     使用pg数据库数据创建三元组
@@ -15,7 +15,8 @@ class CerebrovascularKG:
         self.namespace = rdflib.Namespace('https://bit.zust.edu.cn/niai/kg/')
 
     def select_data(self):
-        data = self.session.query(CerebrovascularDiseases).order_by(CerebrovascularDiseases.rank).all()
+        # data = self.session.query(CerebrovascularDiseases).order_by(CerebrovascularDiseases.rank).all()
+        data = self.session.query(CDtoC).order_by(CDtoC.rank).all()
         return data
 
     def create_rdf(self):
@@ -142,7 +143,7 @@ class CerebrovascularKG:
             if data.url:
                 d_url = rdflib.URIRef(self.namespace + 'entity/url/' + data.url.replace(' ', '_'))
                 self.g.add((d_title, url, d_url))
-            self.g.serialize("graph.rdf")
+            self.g.serialize("graph_cn.rdf")
 
 
 def main():

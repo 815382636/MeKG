@@ -4,3 +4,4 @@ scrapy_cerebrovascular/sr.csv
 scrapy_cerebrovascular/error.txt
 scrapy_cerebrovascular/error1.txt
 create_kg/graph.rdf
+create_kg/graph_cn.rdf
