@@ -143,7 +143,7 @@ class CerebrovascularKG:
             if data.url:
                 d_url = rdflib.URIRef(self.namespace + 'entity/url/' + data.url.replace(' ', '_'))
                 self.g.add((d_title, url, d_url))
-            self.g.serialize("graph_cn.rdf")
+            self.g.serialize("graph_cn.owl")
 
 
 def main():
